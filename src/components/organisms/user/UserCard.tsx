@@ -5,10 +5,11 @@ type Props = {
   imageUrl: string;
   userName: string;
   fullName: string;
+  onClick: () => void;
 }
 
 export const UserCard: FC<Props> = memo((props) => {
-  const { imageUrl, userName, fullName } = props;
+  const { imageUrl, userName, fullName, onClick } = props;
   return (
     <Box
       w="260px"
@@ -18,6 +19,7 @@ export const UserCard: FC<Props> = memo((props) => {
       shadow="md"
       p={4}
       _hover={{ cursor: "pointer", opacity: 0.8 }}
+      onClick={onClick}
     >
       <Stack textAlign="center">
         <Image
@@ -26,6 +28,7 @@ export const UserCard: FC<Props> = memo((props) => {
           src={imageUrl}
           alt={userName}
           m="auto"
+          objectFit="cover"
         />
         <Text fontSize="lg" fontWeight="bold">{userName}</Text>
         <Text fontSize="sm" color="gray">{fullName}</Text>
